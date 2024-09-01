@@ -29,7 +29,7 @@ namespace MyWebSite.Areas.Admin.Controllers
         public IActionResult AddWriter(WriterClass w)
         {
             writers.Add(w);
-            var jsonWriters = JsonConvert.SerializeObject(w);
+            var jsonWriters = JsonConvert.SerializeObject(w); 
             return Json(jsonWriters);
         }
 
