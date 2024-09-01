@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace MyWebSite.Areas.Admin.Controllers
 {
-    [AllowAnonymous]
+    [AllowAnonymous]      
     [Route("Admin/[Controller]/[Action]/{id?}")]
     [Area("Admin")]
     public class WriterController : Controller
