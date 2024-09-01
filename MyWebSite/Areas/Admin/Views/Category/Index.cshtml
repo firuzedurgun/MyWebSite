@@ -1,0 +1,39 @@
+﻿@using X.PagedList
+@using X.Web.PagedList
+@model IPagedList<EntityLayer.Concrete.Category>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Category List</h1>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Category Name</th>
+        <th>Make Passive</th>
+        <th>Make Active</th>
+        <th>Edit</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.CategoryId</th>
+            <td>@item.CategoryName</td>
+            <td><a href="/Admin/Category/CategoryDelete/@item.CategoryId" id="DeleteBtn"
+                   onclick="return confirm('Are you sure you want to delete');" class="btn btn-danger">Passive</a>
+            </td>
+
+            <td><a href="#" class="btn btn-outline-warning">Active</a></td>
+            <td><a href="#" class="btn btn-success">Edit</a></td>
+        </tr>
+    }
+</table>
+<a href="/Admin/Category/AddCategory/" class="btn btn-primary">New Category</a>
+<br />
+<br />
+
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index",new { page }))
